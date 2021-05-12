@@ -1,0 +1,21 @@
+/* JS */
+.errCont{
+    width: 80%;
+    margin-right: 20%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.validForm{
+    background-color: rgb(134, 204, 134);
+}
+
+.invalidForm {
+    background-color: rgb(228, 120, 120);
+}
+
+@media only screen and (max-width: 767px){
+    .errCont{
+    font-size: 0.6rem;
+    }
+}
