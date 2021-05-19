@@ -27,7 +27,6 @@
 /*Copyright, Tos, Privacy Policy*/
 
 main {
-  width: 90vw;
   padding: 10% 5vw;
 }
 
@@ -48,14 +47,6 @@ a {
   padding: 0 2px;
 }
 
-h1 {
-  font-size: var(--font-large);
-  text-align: center;
-}
-h2 {
-  font-size: var(--font-medium-plus);
-}
-
 p {
   margin-bottom: 3%;
   margin-left: 1rem;
@@ -67,6 +58,29 @@ ul {
 
 ul li {
   margin-bottom: 1%;
+}
+
+.footerContent h1 {
+  font-size: var(--font-large);
+  text-align: center;
+}
+
+.footerContent h2{
+  font-size: var(--font-medium-plus);
+}
+
+.footerContent h3 {
+  margin-top: 3%;
+}
+
+.footerContent h2 + h3{
+  width: 100%;
+  text-align: right;
+  margin-right: 3%;
+}
+
+.footerContent h3 + p{
+  margin-top: 5%;
 }
 
 .footerContent a:link, .footerContent a:visited {

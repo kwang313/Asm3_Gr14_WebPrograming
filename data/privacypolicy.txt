@@ -1,0 +1,5 @@
+title:privacy policy
+author:admin
+content:privacy policy.<br />
+<br />
+This is privacy policy.
