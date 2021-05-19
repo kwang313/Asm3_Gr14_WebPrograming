@@ -1,13 +1,9 @@
 # Asm3_Gr14_WebPrograming
-
-Group contribution:
+Team Member:
 
 Nguyen Ha Minh Duy(s3852307)
-
 Lee Gain(s3878170)
-
 Tran Vinh Khang(s3855823)
-
 Jang Mun Suk(s3877629)
 
 
