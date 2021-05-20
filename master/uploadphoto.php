@@ -43,9 +43,9 @@ if(isset($_POST["uploadSubmitOn"])){
                 <input type="checkbox" id="inpNavToggle" />
                 <nav class="nav">
                     <a class="link" href="index.html">Home</a>
-                    <a class="link" href="aboutus.html">About us</a>
+                    <a class="link" href="aboutus.php">About us</a>
                     <a class="link" href="fees.html">Fees</a>
-                    <a class="link" id="account" href="myaccount.html">My account</a>
+                    <a class="link" id="account" href="myaccount.php">My account</a>
                     <a class="link" href="browseproducts.html">Browse</a>
                     <a class="link" href="faq.html">FAQs</a>
                     <a class="link" href="contact.html">Contact</a>
@@ -89,15 +89,15 @@ if(isset($_POST["uploadSubmitOn"])){
     </div>
     <!-- Footer -->
     <footer>
-        <a class="footer-link" href="copyright.html">
+        <a class="footer-link" href="copyright.php">
             <i class="far fa-copy"></i>
             <span class="des">Copy Right</span>
         </a>
-        <a class="footer-link" href="tos.html">
+        <a class="footer-link" href="tos.php">
             <i class="fas fa-concierge-bell"></i>
             <span class="des">ToS</span>
         </a>
-        <a class="footer-link" href="privacypolicy.html">
+        <a class="footer-link" href="privacypolicy.php">
             <i class="fas fa-user-secret"></i>
             <span class="des">Privacy Policy</span>
         </a>
