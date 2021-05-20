@@ -1,8 +1,8 @@
 <?php
 require "datafunction.php";
 session_start();
+$mypagePath = "\"".changeMyPagePath()."\"";
 
-// Check validation
 // Below codes check validation of login form.
 // If the form is validate, it ushers user to mypage webpage or dashboard.
 // If the form is invalidate, it displays error message.
@@ -56,13 +56,13 @@ if(isset($_POST['loginSubmitOn'])){
                 </label>
                 <input type="checkbox" id="inpNavToggle" />
                 <nav class="nav">
-                    <a class="link" href="index.html">Home</a>
+                    <a class="link" href="index.php">Home</a>
                     <a class="link" href="aboutus.php">About us</a>
-                    <a class="link" href="fees.html">Fees</a>
-                    <a class="link" id="account" href="myaccount.php">My account</a>
-                    <a class="link" href="browseproducts.html">Browse</a>
-                    <a class="link" href="faq.html">FAQs</a>
-                    <a class="link" href="contact.html">Contact</a>
+                    <a class="link" href="fees.php">Fees</a>
+                    <a class="link" id="account" href=<?=$mypagePath?>>My account</a>
+                    <a class="link" href="browseproducts.php">Browse</a>
+                    <a class="link" href="faq.php">FAQs</a>
+                    <a class="link" href="contact.php">Contact</a>
                 </nav>
             </div>
         </div>
@@ -81,13 +81,15 @@ if(isset($_POST['loginSubmitOn'])){
                         required />
                     <ul class="errCont" id="olPw"></ul>
                     <?php
+require "datafunction.php";
+session_start();
                         if(isset($setErrMsg)){
                             echo $setErrMsg;
                         }
                     ?>
                     <input type="submit" value="Sign In" name="loginSubmitOn" />
                 </form>
-                <p><a href="forgotpassword.html">Forgot Password ?</a></p>
+                <p><a href="forgotpassword.php">Forgot Password ?</a></p>
             </div>
 
             <!--Sign Up-->
@@ -129,7 +131,7 @@ if(isset($_POST['loginSubmitOn'])){
     <script type="text/javascript" src="js/cookies.js"></script>
     <script type="text/javascript" src="js/formvalidation.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
-    <script type="text/javascript" src="js/checkstatus.js"></script>
+
     <noscript>It seems like your browser does not support JavaScript. Please check again.</noscript>
 </body>
 

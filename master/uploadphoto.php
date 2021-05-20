@@ -1,9 +1,12 @@
 <?php
+require "datafunction.php";
 session_start();
 if ((!isset($_SESSION['admin']))&&
     (!isset($_SESSION['login']))){
     header("location:myaccount.php");
 }
+
+$mypagePath = "\"".changeMyPagePath()."\"";
 
 // The below code receive photo from the admin
 // and change the portraits of the member who the admin want to change.
@@ -42,13 +45,13 @@ if(isset($_POST["uploadSubmitOn"])){
                 </label>
                 <input type="checkbox" id="inpNavToggle" />
                 <nav class="nav">
-                    <a class="link" href="index.html">Home</a>
+                    <a class="link" href="index.php">Home</a>
                     <a class="link" href="aboutus.php">About us</a>
-                    <a class="link" href="fees.html">Fees</a>
-                    <a class="link" id="account" href="myaccount.php">My account</a>
-                    <a class="link" href="browseproducts.html">Browse</a>
-                    <a class="link" href="faq.html">FAQs</a>
-                    <a class="link" href="contact.html">Contact</a>
+                    <a class="link" href="fees.php">Fees</a>
+                    <a class="link" id="account" href=<?=$mypagePath?>>My account</a>
+                    <a class="link" href="browseproducts.php">Browse</a>
+                    <a class="link" href="faq.php">FAQs</a>
+                    <a class="link" href="contact.php">Contact</a>
                 </nav>
             </div>
         </div>
@@ -105,7 +108,7 @@ if(isset($_POST["uploadSubmitOn"])){
     <script type="text/javascript" src="js/cookies.js"></script>
     <script type="text/javascript" src="js/formvalidation.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
-    <script type="text/javascript" src="js/checkstatus.js"></script>
+
     <noscript>It seems like your browser does not support JavaScript. Please check again.</noscript>
 </body>
 

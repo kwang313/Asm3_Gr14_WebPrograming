@@ -1,4 +1,6 @@
 <?php
+require "datafunction.php";
+session_start();
   session_start();
 
   if (isset($_POST['act'])) {
@@ -29,6 +31,8 @@
 
 <body>
     <?php
+require "datafunction.php";
+session_start();
   if (isset($status)) {
     echo "<h3 class=\"error\">$status</h3>";
   }

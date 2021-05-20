@@ -1,7 +1,6 @@
 <?php
 require "datafunction.php";
 session_start();
-$result = getData("../data/copyright.txt");
 $mypagePath = "\"".changeMyPagePath()."\"";
 ?>
 
@@ -9,13 +8,15 @@ $mypagePath = "\"".changeMyPagePath()."\"";
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/footerContentsStyle.css">
-    <link rel='stylesheet' href='css/headerandfooter.css'>
+    <script src="https://kit.fontawesome.com/eb52f39614.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/accountcontentsStyle.css">
+    <link rel="stylesheet" href="css/headerandfooter.css">
     <link rel="stylesheet" type="text/css" href="css/cookies.css" />
-    <script src="https://kit.fontawesome.com/13954ad90d.js" crossorigin="anonymous"></script>
-    <title>Privacy Policy</title>
+    <link rel="stylesheet" type="text/css" href="css/successform.css" />
+    <title>About Us</title>
 </head>
 
 <body>
@@ -40,16 +41,12 @@ $mypagePath = "\"".changeMyPagePath()."\"";
             </div>
         </div>
     </header>
-    <main class="footerContent">
-        <h1>Privacy Policy for MORE</h1>
-        <section>
-            <h2>Title:<?=$result["title"]?></h2>
-            <h3>Author:<?=$result["author"]?></h3>
-        </section>
-        <section>
-            <h3>Detail:</h3>
-            <p><?=$result["content"]?></p>
-        </section>
+    <main>
+        <div class="msgCont">
+            <h1>Thank you!</h1>
+            <p>Your information has been successfully sent.</p>
+            <a href="index.html"><button>Go Back to the homepage.</button></a>
+        </div>
     </main>
     <!--Cookies-->
     <div class="popup_cookies">
@@ -69,7 +66,8 @@ $mypagePath = "\"".changeMyPagePath()."\"";
     <footer>
         <a class="footer-link" href="copyright.php">
             <i class="far fa-copy"></i>
-            <span class="des">Copy Right</span>
+            <span class="des">CopyRight</span>
+
         </a>
         <a class="footer-link" href="tos.php">
             <i class="fas fa-concierge-bell"></i>
@@ -80,8 +78,8 @@ $mypagePath = "\"".changeMyPagePath()."\"";
             <span class="des">Privacy Policy</span>
         </a>
     </footer>
-    <script type="text/javascript" src="js/cookies.js"></script>
 
+    <script type="text/javascript" src="js/cookies.js"></script>
     <noscript>It seems like your browser does not support JavaScript. Please check again.</noscript>
 </body>
 
