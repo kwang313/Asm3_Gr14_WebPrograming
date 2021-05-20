@@ -81,8 +81,6 @@ if(isset($_POST['loginSubmitOn'])){
                         required />
                     <ul class="errCont" id="olPw"></ul>
                     <?php
-require "datafunction.php";
-session_start();
                         if(isset($setErrMsg)){
                             echo $setErrMsg;
                         }
@@ -131,7 +129,6 @@ session_start();
     <script type="text/javascript" src="js/cookies.js"></script>
     <script type="text/javascript" src="js/formvalidation.js"></script>
     <script type="text/javascript" src="js/login.js"></script>
-
     <noscript>It seems like your browser does not support JavaScript. Please check again.</noscript>
 </body>
 

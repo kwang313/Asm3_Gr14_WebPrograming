@@ -327,7 +327,6 @@ $mypagePath = "\"".changeMyPagePath()."\"";
         </a>
     </footer>
     <script type="text/javascript" src="js/modal.js"></script>
-
     <script type="text/javascript" src="js/cookies.js"></script>
     <noscript>It seems like your browser does not support JavaScript. Please check again.</noscript>
 </body>

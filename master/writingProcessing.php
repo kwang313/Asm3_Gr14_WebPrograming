@@ -1,8 +1,6 @@
 <?php
 require "datafunction.php";
 session_start();
-require "datafunction.php";
-session_start();
 if(isset($_POST['editsubmitOn'])){
     if(isset($_POST['title'])&&
         isset($_POST['wAuthor'])&&
