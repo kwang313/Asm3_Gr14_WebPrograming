@@ -1,5 +1,6 @@
 title:privacy policy
 author:admin
-content:privacy policy.<br />
+content:Privacy policy.<br />
+<br />
 <br />
 This is privacy policy.

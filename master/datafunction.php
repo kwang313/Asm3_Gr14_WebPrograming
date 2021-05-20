@@ -1,7 +1,9 @@
 <?php
+require "datafunction.php";
+session_start();
 function getData($fileName, $cleanProccessingOn = false){
-    //This function receive file name, and clean proccessing as prameters
-    // and return the associative array which include all contents from the assigned file.
+    //This function receives file name, and clean proccessing as parameters
+    // and returns the associative array which include all contents from the assigned file.
     $dataArr = array();
     $file = fopen("$fileName", "r") or die("The programme cannot open file.");
     flock($file, LOCK_SH);
@@ -26,14 +28,15 @@ function getData($fileName, $cleanProccessingOn = false){
 }
 
 function setData($fileName, $title, $author, $content){
-    //This function receive file name, its title, its author and its content as prameters
-    //and write the title, author and content on the assigned file.
+    //This function receives file name and clean processing as parameters
+    //and writes the title, author and content on the assigned file.
     $newContent = trim($content);
     $newContent = nl2br($newContent);
     $txtArr = ["title" => $title,
                 "author" => $author,
                 "content" => $newContent];
-    $flen = 2;
+    echo count($txtArr);
+    $flen = count($txtArr) - 1;
     $lineCount = 0;
     $f = fopen($fileName, "w") or die("The programme cannot open file.");
     foreach($txtArr as $topic => $content){
@@ -49,7 +52,7 @@ function setData($fileName, $title, $author, $content){
 
 function displayErrMsg($msgArr){
     //This function receives an array which contain error messages.
-    //and returns string indicating error messages in <li> tag.
+    //and returns string indicating error messages in the <li> tag.
     $listStr = "";
     if(!empty($msgArr)){
         $msgArrCount = count($msgArr);
@@ -61,8 +64,8 @@ function displayErrMsg($msgArr){
 }
 
 function getCSVfile($filepath){
-    //This function receive csv file path as prameters
-    //and return the associative array of csv file. 
+    //This function receives csv file path as parameters
+    //and returns the associative array of csv file. 
     $file = fopen($filepath,"r");
     flock($file, LOCK_SH);
     $titles = fgetcsv($file);
@@ -81,8 +84,8 @@ function getCSVfile($filepath){
 }
 
 function showUserInfo($filepath, $uID){
-    //This function receive file path and user ID as prameters
-    //and return user information whose email or phone number in the receive file. 
+    //This function receive file path and user ID as parameters
+    //and returns user information whose email or phone number in the receive file. 
     $db = getCSVfile($filepath);
     foreach($db as $data){
         $csvEmail = trim($data["email"]);
@@ -96,8 +99,8 @@ function showUserInfo($filepath, $uID){
 }
 
 function checkAdmin($uID, $uPW){
-    //This function receive user id and user password as prameters
-    //and check whether the user is an admin or not.
+    //This function receives a user id and user password as parameters
+    //and checks whether the user is an admin or not.
     $adminFile = $uID;
     $dataAssArr = getData("../data/admin.txt");
     $id = $dataAssArr["id"];
@@ -113,13 +116,29 @@ function checkAdmin($uID, $uPW){
 }
 
 function checkUser($ID, $PW){
-    //This function receive user id and user password as prameters
-    //and check whether the user is an registered user or not.
+    //This function receives a user id and user password as parameters
+    //and checks whether the user is a registered user or not.
     $fpath = "../data/register.csv";
     $info = showUserInfo($fpath, $ID);
     if ($info && (password_verify($PW, $info["password"]))){
         return true;
     }
     return false;
+}
+
+function changeMyPagePath(){
+    // This function checks the status of the user
+    // and changes my account path according to the user status.
+    $loggedIn = $_SESSION["login"];
+    $admin = $_SESSION["admin"];
+    $myPagePath = "myaccount.php";
+
+    if($loggedIn){
+        $mypagePath = "mypage.php";
+        if($admin){
+            $mypagePath = "dashboard.php";
+        }
+    }
+    return $mypagePath;
 }
 ?>

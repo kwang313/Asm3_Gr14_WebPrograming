@@ -1,10 +1,6 @@
 <?php
 require "datafunction.php";
 session_start();
-if ((!isset($_SESSION['admin']))&&
-    (!isset($_SESSION['login']))){
-    header("location:myaccount.php");
-}
 $mypagePath = "\"".changeMyPagePath()."\"";
 ?>
 
@@ -12,14 +8,14 @@ $mypagePath = "\"".changeMyPagePath()."\"";
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>G14 web Programming</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='css/headerandfooter.css'>
+    <link rel="stylesheet" href="css/faq.css">
+    <link rel="stylesheet" href="css/headerandfooter.css" />
     <link rel="stylesheet" type="text/css" href="css/cookies.css" />
-    <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
-    <script src="https://kit.fontawesome.com/13954ad90d.js" crossorigin="anonymous"></script>
-    <title>Dashboard</title>
+</head>
+<script src="https://kit.fontawesome.com/13954ad90d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -44,26 +40,49 @@ $mypagePath = "\"".changeMyPagePath()."\"";
             </div>
         </div>
     </header>
-    <!--Main-->
-    <main id="dashMain">
-        <h1>Welcome to the Dashboard, <?=$_SESSION["adminName"]?></h1>
-        <div class="dashCont">
-            <div class="dashBtnCont">
-                <form class="btnDiv" method="post" action="writing.php">
-                    <h2>Select File:</h2>
-                    <select name="fileName" required>
-                        <option value="">Please Select</option>
-                        <option value="tos">Tos</option>
-                        <option value="copyright">Copy Right</option>
-                        <option value="privacypolicy">Privacy Policy</option>
-                    </select>
-                    <input type="submit" class="dashBtn" id="dashSubmit" name="dashsubmitOn" value="Edit Content">
-                </form>
+    <main id="content">
+        <h1>FAQ</h1>
+        <hr>
+        <h2 class="sub-title">These are some question that we had from few cutomer before.</h2>
+        <br>
+        <details>
+            <summary class="question">Why is our website name mall?</summary>
+            <div class="faq__content">
+                <p>- Since our website sells various stuff online and we link you to many shops that had those stuff. We
+                    call ourself mall</p>
             </div>
-            <div class="dashBtnCont">
-                <button type="button" class="dashBtn uploadPhoto"><a href="uploadphoto.php">Upload Photo<a></button>
+        </details>
+        <details>
+            <summary class="question">How many product do you have?</summary>
+            <div class="faq__content">
+                <p>- We are feturing a total of 40 product. which is from 8 stores and each stores present 4 products.
+                </p>
             </div>
-        </div>
+        </details>
+        <details>
+            <summary class="question">Who is your customer?</summary>
+            <div class="faq__content">
+                <p>- Anyone who is interested in our website and love shopping at the mall. Our website let the customer
+                    have the feleing like they are at the real mall.</p>
+            </div>
+        </details>
+        <details>
+            <summary class="question">How can we contact you?</summary>
+            <div class="faq__content">
+                <p>- Our phone number is xxx-xxx-xxx</p>
+            </div>
+        </details>
+        <details>
+            <summary class="question">Where is your store?</summary>
+            <div class="faq__content">
+                <p>- We are currently at Rmit school which is 702 Nguyen Van Linh, District 7, Ho Chi Minh City</p>
+                <p>- Below is the destination of our store.</p>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.063676043263!2d106.69088691531155!3d10.729572262989512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752fbea5fe3db1%3A0xfae94aca5709003f!2sRMIT%20University%20Vietnam%2C%20Saigon%20South%20campus!5e0!3m2!1sen!2s!4v1618568940735!5m2!1sen!2s"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </details>
+        <br>
     </main>
     <!--Cookies-->
     <div class="popup_cookies">
@@ -78,11 +97,12 @@ $mypagePath = "\"".changeMyPagePath()."\"";
             </div>
         </div>
     </div>
+
     <!-- Footer -->
     <footer>
         <a class="footer-link" href="copyright.php">
             <i class="far fa-copy"></i>
-            <span class="des">Copy Right</span>
+            <span class="des">CopyRight</span>
         </a>
         <a class="footer-link" href="tos.php">
             <i class="fas fa-concierge-bell"></i>
@@ -94,6 +114,7 @@ $mypagePath = "\"".changeMyPagePath()."\"";
         </a>
     </footer>
     <script type="text/javascript" src="js/cookies.js"></script>
+
     <noscript>It seems like your browser does not support JavaScript. Please check again.</noscript>
 </body>
 

@@ -1,3 +1,8 @@
+<?php
+require "datafunction.php";
+session_start();
+$mypagePath = "\"".changeMyPagePath()."\"";
+?>
 <!DOCTYPE html>
 <html lang='en' dir='ltr'>
 
@@ -22,13 +27,13 @@
                 </label>
                 <input type="checkbox" id="inpNavToggle" />
                 <nav class="nav">
-                    <a class="link" href="index.html">Home</a>
+                    <a class="link" href="index.php">Home</a>
                     <a class="link" href="aboutus.php">About us</a>
-                    <a class="link" href="fees.html">Fees</a>
-                    <a class="link" id="account" href="myaccount.php">My account</a>
-                    <a class="link" href="browseproducts.html">Browse</a>
-                    <a class="link" href="faq.html">FAQs</a>
-                    <a class="link" href="contact.html">Contact</a>
+                    <a class="link" href="fees.php">Fees</a>
+                    <a class="link" id="account" href=<?=$mypagePath?>>My account</a>
+                    <a class="link" href="browseproducts.php">Browse</a>
+                    <a class="link" href="faq.php">FAQs</a>
+                    <a class="link" href="contact.php">Contact</a>
                 </nav>
             </div>
         </div>
@@ -182,7 +187,7 @@
         </a>
     </footer>
     <script type="text/javascript" src="js/cookies.js"></script>
-    <script type="text/javascript" src="js/checkstatus.js"></script>
+
     <script type="text/javascript" src="js/infinite_carousel.js"></script>
     <script type="text/javascript" src="js/infinite_carousel1.js"></script>
     <script type="text/javascript" src="js/infinite_carousel2.js"></script>

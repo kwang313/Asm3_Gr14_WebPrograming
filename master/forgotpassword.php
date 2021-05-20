@@ -1,21 +1,20 @@
 <?php
 require "datafunction.php";
 session_start();
-$result = getData("../data/copyright.txt");
 $mypagePath = "\"".changeMyPagePath()."\"";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/footerContentsStyle.css">
     <link rel='stylesheet' href='css/headerandfooter.css'>
+    <link rel='stylesheet' href='css/forgotpwStyle.css'>
     <link rel="stylesheet" type="text/css" href="css/cookies.css" />
     <script src="https://kit.fontawesome.com/13954ad90d.js" crossorigin="anonymous"></script>
-    <title>Privacy Policy</title>
+    <title>Forgot Password</title>
 </head>
 
 <body>
@@ -40,16 +39,15 @@ $mypagePath = "\"".changeMyPagePath()."\"";
             </div>
         </div>
     </header>
-    <main class="footerContent">
-        <h1>Privacy Policy for MORE</h1>
-        <section>
-            <h2>Title:<?=$result["title"]?></h2>
-            <h3>Author:<?=$result["author"]?></h3>
-        </section>
-        <section>
-            <h3>Detail:</h3>
-            <p><?=$result["content"]?></p>
-        </section>
+    <main id="mainPW">
+        <div id="pwCont">
+            <h2>Forgot Password</h2>
+            <p>Enter your email address</p>
+            <form id="signInForm" action="forgotPassword.php" method="POST">
+                <input type="email" id="fotgotPW" name="forgotPW" placeholder="ex)example@rmit.edu.vn" required />
+                <input type="submit" value="Continue" />
+            </form>
+        </div>
     </main>
     <!--Cookies-->
     <div class="popup_cookies">
@@ -64,6 +62,7 @@ $mypagePath = "\"".changeMyPagePath()."\"";
             </div>
         </div>
     </div>
+
 
     <!-- Footer -->
     <footer>
