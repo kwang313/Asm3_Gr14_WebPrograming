@@ -1,6 +1,5 @@
 <?php
-require "datafunction.php";
-session_start();
+
 function getData($fileName, $cleanProccessingOn = false){
     //This function receives file name, and clean proccessing as parameters
     // and returns the associative array which include all contents from the assigned file.
