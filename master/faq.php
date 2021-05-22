@@ -9,13 +9,13 @@ $mypagePath = "\"".changeMyPagePath()."\"";
 
 <head>
     <meta charset="utf-8">
-    <title>G14 web Programming</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/13954ad90d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/faq.css">
     <link rel="stylesheet" href="css/headerandfooter.css" />
     <link rel="stylesheet" type="text/css" href="css/cookies.css" />
+    <title>FAQ</title>
 </head>
-<script src="https://kit.fontawesome.com/13954ad90d.js" crossorigin="anonymous"></script>
 </head>
 
 <body>

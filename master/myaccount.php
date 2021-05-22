@@ -2,32 +2,9 @@
 require "datafunction.php";
 session_start();
 $mypagePath = "\"".changeMyPagePath()."\"";
-
-// Below codes check validation of login form.
-// If the form is validate, it ushers user to mypage webpage or dashboard.
-// If the form is invalidate, it displays error message.
-if(isset($_POST['loginSubmitOn'])){
-    //check submitting
-    if(isset($_POST['uId'])&&
-        isset($_POST['uPsw'])){
-        $inputID = htmlentities($_POST['uId']);
-        $inputPW = htmlentities($_POST['uPsw']);
-        if(checkAdmin($inputID, $inputPW)){
-            $_SESSION['login'] = true;
-            $_SESSION['admin'] = true;
-            $_SESSION['adminName'] = $_POST['uId'];
-            header("location:dashboard.php");
-        } else if(checkUser($inputID, $inputPW)) {
-            $_SESSION['login'] = true;
-            header("location:mypage.php");
-        } else {
-            $loginErrorMsg[] = "Invalid username or password. Please check again";
-        }
-    } else {
-        $loginErrorMsg[] = "The form cannot be empty.";
-    }
-    $setErrMsg = displayErrMsg($loginErrorMsg);
-    }
+if(isset($_SESSION['loginErr'])){
+    $errMsg = displayErrMsg($_SESSION['loginErr']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +49,8 @@ if(isset($_POST['loginSubmitOn'])){
         <div id="signCont">
             <div id="signInCont">
                 <h2>Sign In</h2>
-                <form id="signInForm" method="post" action="myaccount.php" onsubmit="return loginValidation();">
+                <form id="signInForm" method="post" action="myaccountProcessing.php"
+                    onsubmit="return loginValidation();">
                     <label for="signInId"><span>Email or Phone number:</span></label>
                     <input type="text" id="uId" name="uId" placeholder="example@rmit.edu.vn OR 123456789" required />
                     <ul class="errCont" id="olEmail"></ul>
@@ -80,11 +58,7 @@ if(isset($_POST['loginSubmitOn'])){
                     <input type="password" id="uPsw" name="uPsw" placeholder="Enter your password." autocomplete="off"
                         required />
                     <ul class="errCont" id="olPw"></ul>
-                    <?php
-                        if(isset($setErrMsg)){
-                            echo $setErrMsg;
-                        }
-                    ?>
+                    <?php if(isset($errMsg)){echo $errMsg;}?>
                     <input type="submit" value="Sign In" name="loginSubmitOn" />
                 </form>
                 <p><a href="forgotpassword.php">Forgot Password ?</a></p>

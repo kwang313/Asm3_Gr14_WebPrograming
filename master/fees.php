@@ -9,7 +9,6 @@ $mypagePath = "\"".changeMyPagePath()."\"";
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>G14 web Programming</title>
     <link rel="stylesheet" href="css/fees.css" />
     <link rel="stylesheet" href="css/headerandfooter.css" />
     <link rel="stylesheet" type="text/css" href="css/cookies.css" />
