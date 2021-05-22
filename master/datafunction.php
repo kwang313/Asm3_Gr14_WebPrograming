@@ -50,15 +50,12 @@ function setData($fileName, $title, $author, $content){
 }
 
 function displayErrMsg($msgArr){
-    //This function receives an array which contain error messages.
+    //This function receives an string which contain error messages.
     //and returns string indicating error messages in the <li> tag.
     $listStr = "";
     if(!empty($msgArr)){
-        $msgArrCount = count($msgArr);
-        for ($a = 0; $a < $msgArrCount; $a++){
-            $listStr .= "\t"."<li>".$msgArr[$a]."</li>"."\n";
-        }
-        return "<ul class='errCont'>"."\n".$listStr."</ul>";
+        $listStr .= "\t"."<li>".$msgArr."</li>"."\n";
+        return "<ul class='errCont errMsg'>"."\n".$listStr."</ul>";
     }
 }
 
@@ -128,15 +125,13 @@ function checkUser($ID, $PW){
 function changeMyPagePath(){
     // This function checks the status of the user
     // and changes my account path according to the user status.
-    $loggedIn = $_SESSION["login"];
-    $admin = $_SESSION["admin"];
-    $myPagePath = "myaccount.php";
-
-    if($loggedIn){
+    if(isset($_SESSION["login"])){
         $mypagePath = "mypage.php";
-        if($admin){
+        if(isset($_SESSION["admin"])){
             $mypagePath = "dashboard.php";
         }
+    } else {
+        $mypagePath = "myaccount.php";
     }
     return $mypagePath;
 }

@@ -1,21 +1,13 @@
 <?php
 require "datafunction.php";
 session_start();
+$mypagePath = "\"".changeMyPagePath()."\"";
 if ((!isset($_SESSION['admin']))&&
     (!isset($_SESSION['login']))){
     header("location:myaccount.php");
 }
-
-$mypagePath = "\"".changeMyPagePath()."\"";
-
-// The below code receive photo from the admin
-// and change the portraits of the member who the admin want to change.
-if(isset($_POST["uploadSubmitOn"])){
-    if($_FILES["profile"]["error"] == UPLOAD_ERR_OK){
-        $newPath = "New_products/profilePic".$_POST["memberName"].".jpg";
-        move_uploaded_file($_FILES["profile"]["tmp_name"], $newPath);
-        header("location:aboutus.php");
-    }
+if(isset($_SESSION['uploadErr'])){
+    $errMsg = displayErrMsg($_SESSION['uploadErr']);
 }
 ?>
 
@@ -30,6 +22,7 @@ if(isset($_POST["uploadSubmitOn"])){
     <link rel='stylesheet' href='css/headerandfooter.css'>
     <link rel="stylesheet" type="text/css" href="css/cookies.css" />
     <link rel="stylesheet" type="text/css" href="css/dashboard.css" />
+    <link rel='stylesheet' href='css/formvalidation.css'>
     <script src="https://kit.fontawesome.com/13954ad90d.js" crossorigin="anonymous"></script>
     <title>Upload photo</title>
 </head>
@@ -59,7 +52,7 @@ if(isset($_POST["uploadSubmitOn"])){
     <!--Main-->
     <main id="uploadMain">
         <h1>Upload photo</h1>
-        <form method="post" action="uploadphoto.php" enctype="multipart/form-data">
+        <form method="post" action="uploadphotoProcessing.php" enctype="multipart/form-data">
             <h2>Select Member:</h2>
             <select name="memberName" required>
                 <option value="">Please Select</option>
@@ -68,12 +61,12 @@ if(isset($_POST["uploadSubmitOn"])){
                 <option value="Daniel">Nguyen Ha Minh Duy</option>
                 <option value="Khang">Tran Vinh Khang</option>
             </select>
-
             <label for="=profile">
                 <h2>Uploading photo:</h2>
             </label>
-            <input type="file" id="profile" name="profile" accept="image/png, image/jpeg" required>
+            <input type="file" id="profile" name="profile" required>
             <p>Our website only accepts png and jpeg file. Thank you.</p>
+            <?php if(isset($errMsg)){echo $errMsg;}?>
             <input type="submit" name="uploadSubmitOn" value="Upload">
         </form>
     </main>
