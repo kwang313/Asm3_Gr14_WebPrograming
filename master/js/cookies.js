@@ -1,6 +1,6 @@
 'use strict';
 const cookieBox = document.querySelector(".popup_cookies");
-const acceptBtn = cookieBox.querySelector(".cookies_buttons button");
+const acceptBtn = document.querySelector(".cookies_buttons button");
 
 //Expire the cookies after 1 month
 
