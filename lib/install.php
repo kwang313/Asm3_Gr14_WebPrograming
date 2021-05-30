@@ -7,17 +7,25 @@
 
 
 // When user click on the submit
- if (isset($_POST['click'])) {
+if (isset($_POST['click'])) {
 	$username = $_POST['id'];
 	$password = $_POST['password'];
+	$retypepass = $_POST['retype-password'];
 	$uniqid = password_hash($_POST['password'], PASSWORD_DEFAULT);
+}
 
-	// write into txt file
+if ($_POST['password'] === $_POST['retype-password']){
+	echo "<script> alert ('You are in!') </script>";
+
+		// write into txt file
 	$write = fopen('pass.txt', 'w'); // open txt file
 	fwrite($write, $_POST['id']);  //write the username
 	fwrite($write, "\n");	// new line
 	fwrite($write, password_hash($_POST['password'], PASSWORD_DEFAULT)); //write a hash password
- }
+}
+else{
+	echo "<script> alert ('Please fill in the correct password :(') </script>";
+}
 
 ?>
 
@@ -27,26 +35,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Admin account</title>
-
-	<style>
-    form div {
-        margin: 20px 50px;
-    }
-
-    .error {
-        background-color: red;
-    }
     </style>
 </head>
 <body>
 
-
-<?php
-// an error if user enter wrong
-//  if (isset($status)) {
-//    echo "<h3 class=\"error\">$status</h3>";
-//  }
-?>
 
 	<form method="post" action="install.php">
 		<h2>Admin account</h2>
