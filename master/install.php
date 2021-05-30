@@ -25,7 +25,7 @@ setAdmin()
         <br>
         <input type="submit" name="click" value="Login">
     </form>
-    <main>
-        </body>
+  <main>
+</body>
 
-        </html>
+</html>
