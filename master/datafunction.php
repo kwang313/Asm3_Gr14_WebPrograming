@@ -34,7 +34,6 @@ function setData($fileName, $title, $author, $content){
     $txtArr = ["title" => $title,
                 "author" => $author,
                 "content" => $newContent];
-    echo count($txtArr);
     $flen = count($txtArr) - 1;
     $lineCount = 0;
     $f = fopen($fileName, "w") or die("The programme cannot open file.");
@@ -134,5 +133,35 @@ function changeMyPagePath(){
         $mypagePath = "myaccount.php";
     }
     return $mypagePath;
+}
+
+function setAdmin(){
+    // This function check the form when the user set admin password and id
+    // it returns a success message and saves the id and the password in the external folder
+    // if errors occur, it shows an error message.
+    if (isset($_POST['click'])) {
+        if(isset($_POST['id']) &&
+            isset($_POST['password']) &&
+            isset($_POST['retypePassword'])){
+            $username = $_POST['id'];
+            $password = $_POST['password'];
+            $retypepass = $_POST['retypePassword'];
+            $hashedPass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            if ($password === $retypepass){
+                echo "<script> alert ('You are in!') </script>";
+                $write = fopen('../data/admin.txt', 'w');
+                flock($write, LOCK_EX);
+                fwrite($write,"id:" . $username);
+                fwrite($write, "\n");
+                fwrite($write, "pw:" . $hashedPass);
+                flock($write, LOCK_UN);
+                fclose($write);
+            } else {
+                echo "<script> alert ('Passwords do not match, please retype:(') </script>";
+            }
+        } else {
+            echo "<script> alert ('Please fill out the following form:(') </script>";
+        }
+    }
 }
 ?>
