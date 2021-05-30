@@ -5,10 +5,8 @@ function callJSfile($jsFiles = []){
         $fileName = $jsFiles[$i];
         echo $indentation."<script type='text/javascript' src='js/$fileName.js'></script>";
     }
-    echo '<script type="text/javascript" src="js/cookies.js"></script>';
     echo '<noscript>It seems like your browser does not support JavaScript. Please check again.</noscript>';
     echo '</body>';
-    
     echo '</html>';
 }
 ?>

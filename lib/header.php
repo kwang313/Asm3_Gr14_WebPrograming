@@ -19,5 +19,3 @@
             </div>
         </div>
     </header>
-    <!--Main-->
-    <main>
