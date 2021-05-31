@@ -1,3 +1,4 @@
+session_start();
 <!DOCTYPE html>
 <html>
 
@@ -49,8 +50,6 @@
 		  </div>
 		</div>  
         <?php
-        session_start();
-        $_SESSION['login'] = false;
         if($_SESSION['login'] === true){
         }
         else{
@@ -105,7 +104,7 @@
 
             </div>
             <div class="buttons">
-                <a href="product.html" class="button">Continue Shopping</a>
+                <a href="product.php" class="button">Continue Shopping</a>
                 <a href="thankyou.html" class="button1 order">Order</a>
             </div>
         </div>
