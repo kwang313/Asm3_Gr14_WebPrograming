@@ -1,5 +1,4 @@
 <?php
-require "datafunction.php";
 function sortByName($standartLetter){
     //This function receive file path and user ID as parameters
     //and returns user information whose email or phone number in the receive file. 
