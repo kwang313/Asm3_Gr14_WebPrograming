@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -18,6 +21,7 @@
 
 function get_new_arrivals($arr, $arr_size)
 {
+
     global $new_arrivals;
     $i =0;
     $first = 0;
@@ -64,14 +68,21 @@ function get_new_arrivals($arr, $arr_size)
 }
 
 
-
+if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')   
+         $url = "https://";   
+    else  
+         $url = "http://";   
+$url.= $_SERVER['HTTP_HOST'];   
+$url.= $_SERVER['REQUEST_URI'];          
+$url_components = parse_url($url);
+parse_str($url_components['query'], $params);
 $path = "../../data/products.csv";
 $file = fopen($path,"r");
 $counter = 1;
-
 $featured_store_products = [];
 $new_arrivals = ["", "", "", ""];
 $all_products = [];
+$_SESSION["storeID"] =  $params['storeID'];
 
 while(! feof($file)){
 
@@ -79,12 +90,11 @@ while(! feof($file)){
 
     if($counter != 1){
         if(trim($raw_data) != ""){
-
             $data = explode(",", $raw_data);
             $store_id = $data[4];
             $featured_in_store = $data[6];
 
-            if($store_id == 66){
+            if($store_id == $_SESSION["storeID"]){
                 array_push($all_products, $raw_data);
 
                 if(trim($featured_in_store) == "TRUE"){
@@ -92,6 +102,27 @@ while(! feof($file)){
                         array_push($featured_store_products, $raw_data);
                     }
                 }
+            }
+        }
+    }
+    $counter++;
+}
+fclose($file);
+$storeName;
+$path = "../../data/stores.csv";
+$file = fopen($path,"r");
+$counter = 1;
+while(! feof($file)){
+
+    $raw_data = fgets($file);
+
+    if($counter != 1){
+        if(trim($raw_data) != ""){
+            $data = explode(",", $raw_data);
+            $store_id = $data[0];
+            if($store_id == $_SESSION["storeID"]){
+                $storeName = $data[1];
+                break;
             }
         }
     }
@@ -137,7 +168,7 @@ get_new_arrivals($all_products, $number_of_products);
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h1>Release Your Inner Beast</h1>
+                    <h1><?php echo $storeName?></h1>
                     <p>“To uncover your true potential you must first find your own limits and then you have to have the
                         courage to blow past them.” – Picabo Street</p>
                     <a href="" class="button">EXPLODE NOW!</a>
