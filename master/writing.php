@@ -1,13 +1,16 @@
 <?php
-require "datafunction.php";
-session_start();
+require "../lib/commonphp.php";
 if ((!isset($_SESSION['admin']))&&
     (!isset($_SESSION['login']))){
     header("location:myaccount.php");
 }
-$targetFile = $_POST["fileName"];
-$result = getData("../data/".$targetFile.".txt", "on");
-$mypagePath = "\"".changeMyPagePath()."\"";
+
+// Load template
+require_once "../lib/head.php";
+$cssArr = ["aboutusStyle","headerandfooter","cookies"];
+$fileTitle = "About Us";
+callCSSfile($cssArr, $fileTitle);
+require_once "../lib/header.php";
 ?>
 
 <!DOCTYPE html>
@@ -68,40 +71,10 @@ $mypagePath = "\"".changeMyPagePath()."\"";
             <input type="submit" name="editsubmitOn" value="Edit">
         </form>
     </main>
-
-    <!--Cookies-->
-    <div class="popup_cookies">
-        <img src="New_products/cookie.gif" alt="A cookie">
-        <div class="cookies_content">
-            <h1>We use Cookies!</h1>
-            <p>This website use cookies to help us maintain the functioning. By continuing browsing, you consent to use
-                our use of cookies and other technologies.</p>
-            <div class="cookies_buttons">
-                <button class="learn_more">I agree</button>
-                <a href="https://gdpr-info.eu/" class="learn_more">GDPR</a>
-            </div>
-        </div>
-    </div>
-    <!-- Footer -->
-    <footer>
-        <a class="footer-link" href="copyright.php">
-            <i class="far fa-copy"></i>
-            <span class="des">Copy Right</span>
-        </a>
-        <a class="footer-link" href="tos.php">
-            <i class="fas fa-concierge-bell"></i>
-            <span class="des">ToS</span>
-        </a>
-        <a class="footer-link" href="privacypolicy.php">
-            <i class="fas fa-user-secret"></i>
-            <span class="des">Privacy Policy</span>
-        </a>
-    </footer>
-    <script type="text/javascript" src="js/cookies.js"></script>
-    <script type="text/javascript" src="js/formvalidation.js"></script>
-    <script type="text/javascript" src="js/login.js"></script>
-
-    <noscript>It seems like your browser does not support JavaScript. Please check again.</noscript>
-</body>
-
-</html>
+    <?php
+    require_once "../lib/cookie.php";
+    require_once "../lib/footer.php";
+    require_once "../lib/script.php";
+    $jsArr = ["cookies"];
+    callJSfile($jsArr);       
+?>
