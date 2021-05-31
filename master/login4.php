@@ -1,7 +1,5 @@
 <?php
-require "datafunction.php";
-session_start();
-  session_start();
+
 
   if (isset($_POST['act'])) {
     $pass = $_POST['pass'];
@@ -11,7 +9,7 @@ session_start();
 
       // store the pair on the server for later validation
       // note: the location is outside of document root
-      file_put_contents("../$username".".txt", "id:".$username."/n"."pw:".$uniqid);
+      file_put_contents("../data/$username".".txt", "id:".$username."\n"."pw:".$uniqid);
   }
 ?>
 <!DOCTYPE html>

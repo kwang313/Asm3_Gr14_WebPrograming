@@ -4,7 +4,7 @@ function getData($fileName, $cleanProccessingOn = false){
     //This function receives file name, and clean proccessing as parameters
     // and returns the associative array which include all contents from the assigned file.
     $dataArr = array();
-    $file = fopen("$fileName", "r") or die("The programme cannot open file.");
+    $file = fopen("$fileName", "r");
     flock($file, LOCK_SH);
     if ($file != null){
         while(!feof($file)){
@@ -34,7 +34,6 @@ function setData($fileName, $title, $author, $content){
     $txtArr = ["title" => $title,
                 "author" => $author,
                 "content" => $newContent];
-    echo count($txtArr);
     $flen = count($txtArr) - 1;
     $lineCount = 0;
     $f = fopen($fileName, "w") or die("The programme cannot open file.");
@@ -50,15 +49,12 @@ function setData($fileName, $title, $author, $content){
 }
 
 function displayErrMsg($msgArr){
-    //This function receives an array which contain error messages.
+    //This function receives an string which contain error messages.
     //and returns string indicating error messages in the <li> tag.
     $listStr = "";
     if(!empty($msgArr)){
-        $msgArrCount = count($msgArr);
-        for ($a = 0; $a < $msgArrCount; $a++){
-            $listStr .= "\t"."<li>".$msgArr[$a]."</li>"."\n";
-        }
-        return "<ul class='errCont'>"."\n".$listStr."</ul>";
+        $listStr .= "\t"."<li>".$msgArr."</li>"."\n";
+        return "<ul class='errCont errMsg'>"."\n".$listStr."</ul>";
     }
 }
 
@@ -128,16 +124,44 @@ function checkUser($ID, $PW){
 function changeMyPagePath(){
     // This function checks the status of the user
     // and changes my account path according to the user status.
-    $loggedIn = $_SESSION["login"];
-    $admin = $_SESSION["admin"];
-    $myPagePath = "myaccount.php";
-
-    if($loggedIn){
+    if(isset($_SESSION["login"])){
         $mypagePath = "mypage.php";
-        if($admin){
+        if(isset($_SESSION["admin"])){
             $mypagePath = "dashboard.php";
         }
+    } else {
+        $mypagePath = "myaccount.php";
     }
     return $mypagePath;
+}
+
+function setAdmin(){
+    // This function check the form when the user set admin password and id
+    // it returns a success message and saves the id and the password in the external folder
+    // if errors occur, it shows an error message.
+    if (isset($_POST['click'])) {
+        if(isset($_POST['id']) &&
+            isset($_POST['password']) &&
+            isset($_POST['retypePassword'])){
+            $username = $_POST['id'];
+            $password = $_POST['password'];
+            $retypepass = $_POST['retypePassword'];
+            $hashedPass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            if ($password === $retypepass){
+                echo "<script> alert ('You are in!') </script>";
+                $write = fopen('../data/admin.txt', 'w');
+                flock($write, LOCK_EX);
+                fwrite($write,"id:" . $username);
+                fwrite($write, "\n");
+                fwrite($write, "pw:" . $hashedPass);
+                flock($write, LOCK_UN);
+                fclose($write);
+            } else {
+                echo "<script> alert ('Passwords do not match, please retype:(') </script>";
+            }
+        } else {
+            echo "<script> alert ('Please fill out the following form:(') </script>";
+        }
+    }
 }
 ?>
