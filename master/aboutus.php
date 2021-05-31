@@ -3,7 +3,7 @@ require "../lib/commonphp.php";
 
 // Load template
 require_once "../lib/head.php";
-$cssArr = ["headerandfooter","mallSort","cookies"];
+$cssArr = ["headerandfooter","aboutusStyle","cookies"];
 $fileTitle = "Contact Us";
 callCSSfile($cssArr, $fileTitle);
 require_once "../lib/header.php";
