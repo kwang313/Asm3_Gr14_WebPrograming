@@ -1,8 +1,10 @@
 <?php
 require "../lib/commonphp.php";
+
+// Load template
 require_once "../lib/head.php";
-$cssArr = ["aboutusStyle","headerandfooter","cookies"];
-$fileTitle = "About Us";
+$cssArr = ["headerandfooter","mallSort","cookies"];
+$fileTitle = "Contact Us";
 callCSSfile($cssArr, $fileTitle);
 require_once "../lib/header.php";
 ?>
