@@ -2,18 +2,37 @@ var quantityInputs = document.getElementsByClassName('quantity')
 var productInfo = document.getElementsByClassName('product-info')
 var order = document.getElementsByClassName('order')[0]
 var coupon = document.getElementsByClassName('coupon')[0]
-var products = ["The Speed", "The Strong"]
 var modal = document.getElementById("myModal");
-var span = document.getElementsByClassName("close")[0];
+var notLogin = document.getElementById("login-modal");
 
+var span = document.getElementsByClassName("close")[0];
+var shop = document.getElementById("shop-name");
+if(shop.innerText == "BOX"){
+	var products = ["The Chair", "The Head"];
+}
+if(shop.innerText == "sport"){
+	var products = ["The Speed", "The Strong"];
+}
+cartNumber()
 updateCart()
 updateTotal()
 emtpyCart()
 for (var i = 0; i < quantityInputs.length; i++) {
-    quantityInputs[i].addEventListener('change', quantityUpdate)
-    
+    quantityInputs[i].addEventListener('change', (e) => {    
+        quantityUpdate(e);
+        cartNumber();    
+   });
 }
-order.addEventListener('click',clearCart)
+if(notLogin){
+    order.addEventListener('click',(e) => {    
+        e.preventDefault()
+        displayLogin()
+   })
+   console.log("haha");
+}
+else{
+    order.addEventListener('click',clearCart)
+}
 coupon.addEventListener('change',() => {    
      updateTotal();
      couponError();    
@@ -31,6 +50,9 @@ function couponError(){
 	if(couponCheck()==0){
 		modal.style.display = "block";
 	}
+}
+function displayLogin(){
+    notLogin.style.display = "block";
 }
 function couponCheck(){
 	if (coupon.value  == "COSC2430-HD"){
@@ -90,7 +112,13 @@ function updateCart() {
             string = localStorage.getItem(i)
             price = string.split(",")[0]
             quan = string.split(",")[1]
-            img = i.toLowerCase().replace(" ","")
+            var name = i.toLowerCase().replace(" ","")
+            if(name == "thestrong" || name == "thehead"){
+                img = "2";
+            }
+            if(name == "thespeed" || name == "thechair"){
+                img = "1";
+            }
             cart.innerHTML += `<tr class="product-info">
             <td>
                 <div class="info">

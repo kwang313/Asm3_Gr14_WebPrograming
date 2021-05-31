@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta name="author" content="Khang Tran s3855823">
-    <title>BOX | CART</title>
+    <title>Asport | CART</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/headerandfooter.css" />
@@ -14,6 +14,7 @@
 </head>
 
 <body>
+<div id ="shop-name" hidden>sport</div>
     <div class="header">
         <!-- Header -->
         <header>
@@ -28,23 +29,45 @@
                     <input type="checkbox" id="inpNavToggle" />
                     <nav class="nav">
                         <a class="link" href="index.php">Home</a>
-                        <a class="link" href="aboutus.php">About us</a>
-                        <a class="link" href="product.html">Product</a>
-                        <a class="link" href="contact.php">Contact</a>
+                        <a class="link" href="aboutus.html">About us</a>
+                        <a class="link" href="product.php">Product</a>
+                        <a class="link" href="contact.html">Contact</a>
+                        <a class="link cart-number" href="cart.php">
+								
+
+						</a>
 
                     </nav>
                 </div>
             </div>
         </header>   
 		<div id="myModal" class="modal">
-
 		  <!-- Modal content -->
 		  <div class="modal-content">
 			<span class="close">&times;</span>
 			This is an invalid coupon. Please check again.
 		  </div>
-
-		</div>
+		</div>  
+        <?php
+        session_start();
+        $_SESSION['login'] = false;
+        if($_SESSION['login'] === true){
+        }
+        else{
+            echo '<div id="login-modal" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        Please login to proceed.
+                        </br>
+                        <span>
+                            <a href="../register.php" class="button">login</a>
+                        </span>
+                    </div>
+                    </div>';
+        }
+        ?>
+        
         <!-- CART -->
         <div class="container-cart">
             <table class = "cart">
@@ -100,15 +123,15 @@
         </div>
       </div>
     <footer>
-        <a class="footer-link" href="footerContents/copyright.php">
+        <a class="footer-link" href="footerContents/copyright.html">
             <i class="far fa-copy"></i>
             <span class="des">Copy Right</span>
         </a>
-        <a class="footer-link" href="footerContents/tos.php">
+        <a class="footer-link" href="footerContents/tos.html">
             <i class="fas fa-concierge-bell"></i>
             <span class="des">ToS</span>
         </a>
-        <a class="footer-link" href="footerContents/privacypolicy.php">
+        <a class="footer-link" href="footerContents/privacypolicy.html">
             <i class="fas fa-user-secret"></i>
             <span class="des">Privacy policy</span>
         </a>
@@ -116,6 +139,8 @@
 
 </body>
 	<script type="text/javascript" src="../js/cookies.js"></script>
+<script src ="./js/product.js" ></script>
 <script src ="./js/cart.js" ></script>
+
 
 </html>
