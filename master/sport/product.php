@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -63,7 +66,7 @@ while(! feof($file)){
             $store_id = $data[4];
             $featured_in_store = $data[6];
 
-            if($store_id == 10){
+            if($store_id == $_SESSION["storeID"]){
                 array_push($all_products, $raw_data);
             }
         }
@@ -91,7 +94,6 @@ $prev = $page - 1;
 $next = $page + 1;
 
 $last_product = $paginationStart + $limit;
-
 
 ?>
 

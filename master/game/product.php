@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -63,7 +66,7 @@ while(! feof($file)){
             $store_id = $data[4];
             $featured_in_store = $data[6];
 
-            if($store_id == 66){
+            if($store_id == $_SESSION["storeID"]){
                 array_push($all_products, $raw_data);
             }
         }
@@ -91,7 +94,6 @@ $prev = $page - 1;
 $next = $page + 1;
 
 $last_product = $paginationStart + $limit;
-
 
 ?>
 
@@ -166,6 +168,7 @@ $last_product = $paginationStart + $limit;
                     $sort_products = sortCSVFile($path);
                 }
                 for ($i=0; $i < count($sort_products); $i++) {
+                    $link = "";
                    if($i != 0){
                         if(($i > $paginationStart) && ($i < $last_product + 1)){
                             $data = $sort_products[$i];
@@ -186,7 +189,7 @@ $last_product = $paginationStart + $limit;
             ?>
             
             <div class="col-product-4">
-                <a href=<?php echo $link ?>>
+                <a href= <?php echo $link?>>
                     <img src="img/product/<?php echo $img; ?>" alt="<?php echo $name; ?>">
                 </a>
                 <h3><?php echo $name; ?></h3>
