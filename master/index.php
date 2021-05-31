@@ -88,7 +88,7 @@
             <?php
             require_once 'product_functions.php';
             $new_products_names = array();
-            $new_products = read_all_products();
+            $new_products = read_newest_products();
             $new_products_count = 0;
             foreach ($new_products as $new_product) {
                 $name = $new_product['name'];
@@ -117,7 +117,7 @@
             <?php
             require_once 'product_functions.php';
             $featured_store_names = array();
-            $featured_stores = read_all_products();
+            $featured_stores = read_featured_products();
             $featured_stores_count = 0;
             foreach ($featured_stores as $featured_store) {
                 $name = $featured_store['name'];
