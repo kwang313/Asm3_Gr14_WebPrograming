@@ -42,7 +42,7 @@
         <div class="container">
             <div class="card">
                 <h1 class="name">Browse Stores by Name</h1>
-                <form method="get" action="browseproducts.php">
+                <form method="get" action="browseproductsprocessing.php">
                     <select class="catagories_name" name="store_catagories">
                         <option value="" selected disabled hidden>Select a store category</option>
                         <option value="1">Department stores</option>
@@ -64,7 +64,7 @@
             </div>
             <div class="card">
                 <h1 class="name">Browse Stores by Category</h1>
-                <form method="get" action="browseproducts.php">
+                <form method="get" action="browseproductsprocessing.php">
                     <select class="catagories_name" name="store_name">
                         <option value="" selected disabled hidden>Select a letter for the store name.</option>
                         <option value="A">A</option>
