@@ -1,42 +1,14 @@
 <?php
-require "datafunction.php";
-session_start();
-$mypagePath = "\"".changeMyPagePath()."\"";
+require "../lib/commonphp.php";
+
+// Load template
+require_once "../lib/head.php";
+$cssArr = ["newproducts","cookies"];
+$fileTitle = "New Product";
+callCSSfile($cssArr, $fileTitle);
+require_once "../lib/header.php";
 ?>
-
-<!DOCTYPE html>
-<html lang='en' dir='ltr'>
-
-<head>
-    <meta charset="utf-8">
-    <link rel='stylesheet' href='css/newproducts.css'>
-    <link rel="stylesheet" type="text/css" href="css/cookies.css" />
-    <script src="https://kit.fontawesome.com/13954ad90d.js" crossorigin="anonymous"></script>
-    <meta name='viewport' content="width=device-width, intial-scale=1.0">
-</head>
-
-<body>
-    <!-- Header -->
-    <header>
-        <div class="bar-content">
-            <div class="bar-content center">
-                <i class="fas fa-store-alt"></i>
-                <label class="bar__nav-toggle" for="inpNavToggle">
-                    <i class="fas fa-bars"></i>
-                </label>
-                <input type="checkbox" id="inpNavToggle" />
-                <nav class="nav">
-                    <a class="link" href="index.php">Home</a>
-                    <a class="link" href="aboutus.php">About us</a>
-                    <a class="link" href="fees.php">Fees</a>
-                    <a class="link" id="account" href=<?=$mypagePath?>>My account</a>
-                    <a class="link" href="browseproducts.php">Browse</a>
-                    <a class="link" href="faq.php">FAQs</a>
-                    <a class="link" href="contact.php">Contact</a>
-                </nav>
-            </div>
-        </div>
-    </header>
+<main>
     <!-- Body -->
     <div class="container">
         <div class="card">
@@ -240,37 +212,11 @@ $mypagePath = "\"".changeMyPagePath()."\"";
             <p><button class="button"><a href="sport/index.html">Visit the store!</a></button></p>
         </div>
     </div>
-    !--Cookies-->
-    <div class="popup_cookies">
-        <img src="New_products/cookie.gif" alt="A cookie">
-        <div class="cookies_content">
-            <h1>We use Cookies!</h1>
-            <p>This website use cookies to help us maintain the functioning. By continuing browsing, you consent to use
-                our use of cookies and other technologies.</p>
-            <div class="cookies_buttons">
-                <button class="learn_more">I agree</button>
-                <a href="https://gdpr-info.eu/" class="learn_more">GDPR</a>
-            </div>
-        </div>
-    </div>
-    <!-- Footer -->
-    <footer>
-        <a class="footer-link" href="copyright.php">
-            <i class="far fa-copy"></i>
-            <span class="des">CopyRight</span>
-        </a>
-        <a class="footer-link" href="tos.php">
-            <i class="fas fa-concierge-bell"></i>
-            <span class="des">ToS</span>
-        </a>
-        <a class="footer-link" href="privacypolicy.php">
-            <i class="fas fa-user-secret"></i>
-            <span class="des">Privacy policy</span>
-        </a>
-    </footer>
-    <script type="text/javascript" src="js/cookies.js"></script>
-    <script type="text/javascript" src="js/checkstatus.js"></script>
-    <noscript>It seems like your browser does not support JavaScript. Please check again.</noscript>
-</body>
-
-</html>
+</main>
+<?php
+    require_once "../lib/cookie.php";
+    require_once "../lib/footer.php";
+    require_once "../lib/script.php";
+    $jsArr = ["checkstatus","cookies"];
+    callJSfile($jsArr);       
+?>

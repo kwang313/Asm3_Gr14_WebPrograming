@@ -1,4 +1,4 @@
-title:copyright
+title:Copyright
 author:admin
 content:copyright.<br />
 <br />

@@ -1,4 +1,4 @@
-title:tos
+title:TOS
 author:admin
 content:Tos.<br />
 <br />

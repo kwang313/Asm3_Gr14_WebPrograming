@@ -1,4 +1,5 @@
 <?php
+<<<<<<< Updated upstream
 require "datafunction.php";
 session_start();
 $mypagePath = "\"".changeMyPagePath()."\"";
@@ -38,6 +39,16 @@ $mypagePath = "\"".changeMyPagePath()."\"";
             </div>
         </div>
     </header>
+=======
+require "../lib/commonphp.php";
+require_once "../lib/head.php";
+$cssArr = ["style","headerandfooter","cookies"];
+$fileTitle = "Index";
+callCSSfile($cssArr, $fileTitle);
+require_once "../lib/header.php";
+?>
+<main>
+>>>>>>> Stashed changes
     <div class="header">
         <div class="container">
             <div class="row">
@@ -53,6 +64,7 @@ $mypagePath = "\"".changeMyPagePath()."\"";
         </div>
     </div>
 
+<<<<<<< Updated upstream
     <!-- Body -->
     <div class="container">
         <div class="tag">
@@ -82,6 +94,60 @@ $mypagePath = "\"".changeMyPagePath()."\"";
         </div>
         <div class="tag">
             <h1>New Product</h1>
+=======
+    <div class="tag">
+        <h1>New Stores</h1>
+        <div class="slider-wrap">
+            <div class="slider">
+                <?php
+            require_once 'stores_function.php';
+            $new_stores_names = array();
+            $new_stores = read_newest_stores();
+            $new_stores_count = 0;
+            foreach ($new_stores as $new_store) {
+                $name = $new_store['name'];
+                echo "
+                <div class='slider-item'>
+                    <div class='img-div'></div>
+                    <h3>$name</h3>
+                </div>
+        ";
+                $new_stores_count++;
+                if ($new_stores_count == 10) {
+                    break;
+                }
+            }
+            ?>
+            </div>
+        </div>
+    </div>
+    <div class="tag">
+        <h1>New products</h1>
+    </div>
+    <div class="slider-wrap1">
+        <div class="slider1">
+            <?php
+            require_once 'product_functions.php';
+            $new_products_names = array();
+            $new_products = read_all_products();
+            $new_products_count = 0;
+            foreach ($new_products as $new_product) {
+                $name = $new_product['name'];
+                $price = $new_product['price'];
+                echo "
+                <div class='slider-item1'>
+                    <div class='img-div1'></div>
+                    <h3>$name</h3>
+                    <h3>$price</h3>
+                </div>
+        ";
+                $new_products_count++;
+                if ($new_products_count == 10) {
+                    break;
+                }
+            }
+            ?>
+>>>>>>> Stashed changes
         </div>
         <div class="slider-wrap1">
             <div class="slider1">
@@ -157,6 +223,7 @@ $mypagePath = "\"".changeMyPagePath()."\"";
         </div>
     </div>
     </div>
+<<<<<<< Updated upstream
 
     <!--Cookies-->
     <div class="popup_cookies">
@@ -196,3 +263,13 @@ $mypagePath = "\"".changeMyPagePath()."\"";
 </body>
 
 </html>
+=======
+</main>
+<?php
+    require_once "../lib/cookie.php";
+    require_once "../lib/footer.php";
+    require_once "../lib/script.php";
+    $jsArr = ["cookies","infinite_carousel","infinite_carousel1","infinite_carousel2","infinite_carousel3"];
+    callJSfile($jsArr);       
+?>
+>>>>>>> Stashed changes
