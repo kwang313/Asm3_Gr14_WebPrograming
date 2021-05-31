@@ -83,12 +83,21 @@ require_once "../lib/header.php";
         <?php
                 if(isset($sortedArray)){
                     echo "<div class='mallDiv'>";
+                    $num = 0;
                     foreach($sortedArray as $mallInfo){
                         $mallName = $mallInfo["name"];
                         $mallID = $mallInfo["id"];
                         echo "<div class='mallCont'>";
-                        echo "<a href='filename?storeID={$mallID}'><img class='mallimg' src='New_products/mall4.jpg'></a>";
-                        echo "<a href='filename?storeID={$mallID}'><h2>{$mallName}</h2></a>";
+                        if($num % 2 == 0){
+                            echo "<a href='sport/index.php?storeID={$mallID}'><img class='mallimg' src='New_products/mall4.jpg'></a>";
+                            echo "<a href='sport/index.php?storeID={$mallID}'><h2>{$mallName}</h2></a>";
+                        }
+                        else{
+                            echo "<a href='game/index.php?storeID={$mallID}'><img class='mallimg' src='New_products/mall4.jpg'></a>";
+                            echo "<a href='game/index.php?storeID={$mallID}'><h2>{$mallName}</h2></a>";
+                        }
+                        $num ++;
+                        
                         echo "</div>";
                     }
                     echo "</div>";
