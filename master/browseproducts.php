@@ -1,6 +1,12 @@
 <?php
-
-
+require "browseproductsprocessing.php";
+if(isset($_GET["submitName"]) || isset(($_GET["submitCatagory"]))){
+        $sortedArray = setSortItems();
+} else{
+    $_GET["submitName"] = True;
+    $_GET["store_name"] = "A";
+    $sortedArray = setSortItems();
+}
 ?>
 
 <!DOCTYPE html>
@@ -10,6 +16,7 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/headerandfooter.css" />
+    <link rel="stylesheet" href="css/mallSort.css" />
     <script src="https://kit.fontawesome.com/13954ad90d.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/13954ad90d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="css/cookies.css" />
@@ -42,8 +49,8 @@
         <section>
             <div class="container">
                 <div class="card">
-                    <h1 class="name">Browse Stores by Name</h1>
-                    <form method="get" action="browseproductsprocessing.php">
+                    <h1 class="name">Browse Stores by Category</h1>
+                    <form method="get" action="browseproducts.php">
                         <select class="catagories_name" name="store_catagories">
                             <option value="" selected disabled hidden>Select a store category</option>
                             <option value="1">Department stores</option>
@@ -60,12 +67,12 @@
                             <option value="12">Services</option>
                             <option value="13">Kiosks</option>
                         </select>
-                        <input type="submit" name="submitName" value="Browse">
+                        <input type="submit" name="submitCatagory" value="Browse">
                     </form>
                 </div>
                 <div class="card">
-                    <h1 class="name">Browse Stores by Category</h1>
-                    <form method="get" action="browseproductsprocessing.php">
+                    <h1 class="name">Browse Stores by Name</h1>
+                    <form method="get" action="browseproducts.php">
                         <select class="catagories_name" name="store_name">
                             <option value="" selected disabled hidden>Select a letter for the store name.</option>
                             <option value="A">A</option>
@@ -95,13 +102,26 @@
                             <option value="Y">Y</option>
                             <option value="Z">Z</option>
                         </select>
-                        <input type="submit" name="submitCatagory" value="Browse">
+                        <input type="submit" name="submitName" value="Browse">
                     </form>
                 </div>
             </div>
         </section>
         <section>
-
+            <?php
+                if(isset($sortedArray)){
+                    echo "<div class='mallDiv'>";
+                    foreach($sortedArray as $mallInfo){
+                        $mallName = $mallInfo["name"];
+                        $mallID = $mallInfo["id"];
+                        echo "<div class='mallCont'>";
+                        echo "<a href='filename?storeName={$mallID}'><img class='mallimg' src='New_products/mall4.jpg'></a>";
+                        echo "<a href='filename?storeName={$mallID}'><h2>{$mallName}</h2></a>";
+                        echo "</div>";
+                    }
+                    echo "</div>";
+                }
+            ?>
         </section>
     </main>
     <!--Cookies-->

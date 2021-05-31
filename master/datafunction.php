@@ -4,7 +4,7 @@ function getData($fileName, $cleanProccessingOn = false){
     //This function receives file name, and clean proccessing as parameters
     // and returns the associative array which include all contents from the assigned file.
     $dataArr = array();
-    $file = fopen("$fileName", "r") or die("The programme cannot open file.");
+    $file = fopen("$fileName", "r");
     flock($file, LOCK_SH);
     if ($file != null){
         while(!feof($file)){
